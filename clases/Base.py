@@ -1,8 +1,11 @@
 import pygame
 
-class Base(object):
+class Base(pygame.sprite.Sprite):
 
-    sprites_principales = pygame.sprite.Group()
+    sprites = pygame.sprite.Group()
+    monedas = pygame.sprite.Group()
+    piso = pygame.sprite.Group()
+    bloques = pygame.sprite.Group()
 
     def __init__(self, x, y, ancho, alto, ruta):
         pygame.sprite.Sprite.__init__(self)
