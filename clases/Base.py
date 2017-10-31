@@ -6,6 +6,7 @@ class Base(pygame.sprite.Sprite):
     monedas = pygame.sprite.Group()
     piso = pygame.sprite.Group()
     bloques = pygame.sprite.Group()
+    letras = pygame.sprite.Group()
 
     def __init__(self, x, y, ancho, alto, ruta):
         pygame.sprite.Sprite.__init__(self)

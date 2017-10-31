@@ -2,7 +2,7 @@ import pygame
 from clases.Controlador import Controlador
 
 
-def procesos(reloj, mario, FPS, frames_totales):
+def procesos(reloj, mario, FPS, frames_totales, ventana):
 
     Controlador.set_fps(reloj, FPS)
 
@@ -13,14 +13,19 @@ def procesos(reloj, mario, FPS, frames_totales):
     if teclas[pygame.K_F1]:
         Controlador.pausa(mario, ventana)
 
-    if mario.permitir_derecha:
-        mario.mover_derecha(7, frames_totales)
+    if mario.permitir:
 
-    elif mario.permitir_izquierda:
-        mario.mover_izquierda(7, frames_totales)
+        if mario.permitir_derecha:
+            mario.mover_derecha(7, frames_totales)
 
-    if mario.permitir_salto and mario.salto is False:
-        mario.activar_salto(340)
+        elif mario.permitir_izquierda:
+            mario.mover_izquierda(7, frames_totales)
+
+        if mario.permitir_salto and mario.salto is False:
+            mario.activar_salto(340)
+
+    else:
+        mario.detenerse()
 
     Controlador.salto_mario(mario, frames_totales)
 

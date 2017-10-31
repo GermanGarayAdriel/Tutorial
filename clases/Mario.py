@@ -30,6 +30,7 @@ class Mario(Base):
         self.permitir_derecha = False
         self.permitir_izquierda = False
         self.permitir_salto = False
+        self.permitir = True
 
         Base.sprites.add(self)
 

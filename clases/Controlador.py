@@ -2,6 +2,7 @@ import pygame
 from clases.Mario import Mario
 from clases.Moneda import Moneda
 from clases.Base import Base
+from clases.Bloque import Bloque
 
 class Controlador(object):
 
@@ -18,7 +19,7 @@ class Controlador(object):
     @classmethod
     def configurar_pantalla(cls, ancho, alto):
 
-        display = pygame.display.set_mode((ancho, alto)) #, pygame.FULLSCREEN
+        display = pygame.display.set_mode((ancho, alto), pygame.FULLSCREEN) #, pygame.FULLSCREEN
         pygame.display.set_caption("Super Poli Bros")
         return display
 
@@ -88,6 +89,16 @@ class Controlador(object):
         moneda = mario.colision(Base.monedas)
         if moneda is not False:
             moneda.agarrada()
+            if moneda.identificador == 1:
+                m = Moneda(120,290,2)
+                bloque = Bloque(100,400)
+            if moneda.identificador == 2:
+                m = Moneda(350,600,3)
+            if moneda.identificador == 3:
+                for item in Base.bloques:
+                    Base.bloques.remove(item)
+                    Base.sprites.remove(item)
+                mario.permitir = False
 
         # Mientras anda a pie
         if mario.salto is False:
@@ -133,3 +144,7 @@ class Controlador(object):
 
             if teclas[pygame.K_F2]:
                 control = True
+
+    @classmethod
+    def buscar_teclas(cls):
+        return pygame.key.get_pressed()
